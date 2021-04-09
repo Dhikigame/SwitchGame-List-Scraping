@@ -1,0 +1,1 @@
+## SwitchGameList=Scraping

@@ -19,7 +19,7 @@ $no_software_count = 0;
 // 日付取得
 echo "【日付】\n";
 $count = 0;
-for($i = 1932; $i <= 5000; $i++) {
+for($i = 1933; $i <= 5000; $i++) {
   // 発売予定がなくなった場合
   if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(0)']->text(), '月') === false) {
     $no_software_count = $i - 1;
@@ -42,7 +42,7 @@ for($i = 1932; $i <= 5000; $i++) {
 // タイトル
 echo "【タイトル】\n";
 $count = 0;
-for($i = 1932; $i <= $no_software_count; $i++) {
+for($i = 1933; $i <= $no_software_count; $i++) {
 
   $db_store['title'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(1)']->text();
 
@@ -53,7 +53,7 @@ for($i = 1932; $i <= $no_software_count; $i++) {
 // 販売メーカー
 echo "【販売メーカー】\n";
 $count = 0;
-for($i = 1932; $i <= $no_software_count; $i++) {
+for($i = 1933; $i <= $no_software_count; $i++) {
 
   $db_store['release_maker'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(2)']->text();
 
@@ -64,7 +64,7 @@ for($i = 1932; $i <= $no_software_count; $i++) {
 // オンライン対応
 echo "【オンライン対応】\n";
 $count = 0;
-for($i = 1932; $i <= $no_software_count; $i++) {
+for($i = 1933; $i <= $no_software_count; $i++) {
 
   $db_store['online'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(3)']->text();
 
@@ -75,7 +75,7 @@ for($i = 1932; $i <= $no_software_count; $i++) {
 // ランキング対応
 echo "【ランキング対応】\n";
 $count = 0;
-for($i = 1932; $i <= $no_software_count; $i++) {
+for($i = 1933; $i <= $no_software_count; $i++) {
 
   $db_store['ranking'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(4)']->text();
 
@@ -86,7 +86,7 @@ for($i = 1932; $i <= $no_software_count; $i++) {
 // CERO
 echo "【CERO】\n";
 $count = 0;
-for($i = 1932; $i <= $no_software_count; $i++) {
+for($i = 1933; $i <= $no_software_count; $i++) {
 
   if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(5)']->text(), "教") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(5)']->text(), "+") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(5)']->text(), "審査") !== false) {
     $db_store['cero'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(5)']->text();

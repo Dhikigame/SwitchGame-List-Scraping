@@ -21,7 +21,7 @@ $no_software_count = 0;
 // 日付取得
 echo "【日付】\n";
 $count = 0;
-for($i = 632; $i <= 1100; $i++) {
+for($i = 633; $i <= 1100; $i++) {
   // 発売予定がなくなった場合
   if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(0)']->text(), '月') === false) {
     $no_software_count++;
@@ -44,7 +44,7 @@ for($i = 632; $i <= 1100; $i++) {
 // タイトル
 echo "【タイトル】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['title'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(1)']->text();
 
@@ -55,7 +55,7 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // 販売メーカー
 echo "【販売メーカー】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['release_maker'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(2)']->text();
 
@@ -66,7 +66,7 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // オンライン対応
 echo "【オンライン対応】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['online'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(3)']->text();
 
@@ -77,7 +77,7 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // ランキング対応
 echo "【ランキング対応】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['ranking'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(4)']->text();
 
@@ -88,7 +88,7 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // JoyCon横持ち対応
 echo "【JoyCon横持ち対応】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['joycon_sideways'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(5)']->text();
 
@@ -99,7 +99,7 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // ダウンロード版対応
 echo "【ダウンロード版対応】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
 
   $db_store['download'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(6)']->text();
 
@@ -110,16 +110,27 @@ for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 // CERO
 echo "【CERO】\n";
 $count = 0;
-for($i = 632; $i <= 1100 - $no_software_count; $i++) {
+// for($i = 632; $i <= 1100 - $no_software_count; $i++) {
 
-  if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "教") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "+") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "審査") !== false) {
-    $db_store['cero'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text();
+//   if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "教") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "+") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), "審査") !== false) {
+//     $db_store['cero'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text();
+//   } else {
+//     $db_store['cero'][$count] = substr($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), 0, 1);
+//   }
+
+//   echo ++$count . " ";
+//   echo $doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text() . "\n";
+// }
+for($i = 633; $i <= 1100 - $no_software_count; $i++) {
+
+  if(strpos($doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text(), "教") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text(), "+") !== false || strpos($doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text(), "審査") !== false) {
+    $db_store['cero'][$count] = $doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text();
   } else {
-    $db_store['cero'][$count] = substr($doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text(), 0, 1);
+    $db_store['cero'][$count] = substr($doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text(), 0, 1);
   }
 
   echo ++$count . " ";
-  echo $doc['table tbody tr:eq(' . $i . ') td:eq(7)']->text() . "\n";
+  echo $doc['table tbody tr:eq(' . $i . ') td:eq(8)']->text() . "\n";
 }
 var_dump($db_store);
 
